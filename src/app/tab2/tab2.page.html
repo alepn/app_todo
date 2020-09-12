@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tarefas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <h4 *ngIf="itemsTodo.length == 0">Nenhuma tarefa cadastrada!</h4>
+
+  <ion-list>
+    <ion-item *ngFor="let todo of itemsTodo">
+      <ion-label>
+        <h2>{{ todo.title }}</h2>
+        <h3>{{ todo.dateTime }}</h3>
+        <p>{{ todo.shortDescription }}</p>
+      </ion-label>
+    </ion-item>    
+  </ion-list>
+
+  <ion-fab (click)="presentNewTodoModal()" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
