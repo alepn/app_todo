@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NewTodoModalPage } from '../new-todo-modal/new-todo-modal.page';
+import { EditTodoModalPage } from '../edit-todo-modal/edit-todo-modal.page';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -10,20 +11,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab2Page {
 
-  itemsTodo = [
-    {
-      id: 1,
-      title: 'teste1',
-      dateTime: '29/09/20',
-      shortDescription: 'teste1'
-    },
-    {
-      id: 2,
-      title: 'teste2',
-      dateTime: '29/09/20',
-      shortDescription: 'teste2'
-    }
-  ]
+  itemsTodo = []
 
   constructor(private modalController: ModalController, private alertController: AlertController) {}
 
@@ -39,6 +27,17 @@ export class Tab2Page {
     if(data){
       this.itemsTodo.push(data)
     }
+  }
+
+  async editTodoModal(todo) {
+    const modal = await this.modalController.create({
+      component: EditTodoModalPage,
+      componentProps: {
+        'modalController': this.modalController,
+        'todo': todo
+      }
+    });
+    await modal.present();
   }
 
   async deleteTodo(todo){

@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'new-todo-modal',
     loadChildren: () => import('./new-todo-modal/new-todo-modal.module').then( m => m.NewTodoModalPageModule)
+  },
+  {
+    path: 'edit-todo-modal',
+    loadChildren: () => import('./edit-todo-modal/edit-todo-modal.module').then( m => m.EditTodoModalPageModule)
   }
 ];
 @NgModule({
