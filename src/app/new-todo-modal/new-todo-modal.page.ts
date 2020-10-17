@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-new-todo-modal',
@@ -17,7 +18,7 @@ export class NewTodoModalPage implements OnInit {
     'detail': ''
   }
 
-  constructor(public alertController: AlertController) { }
+  constructor(private apiService: ApiService, public alertController: AlertController) { }
 
   ngOnInit() {
   }
@@ -36,7 +37,9 @@ export class NewTodoModalPage implements OnInit {
       await alert.present();
     }
     else{
-      this.modalController.dismiss(this.todo);
+      this.apiService.postToDo(this.todo).subscribe((result:any) => {
+        this.modalController.dismiss(result);
+      })
     }
   }
 

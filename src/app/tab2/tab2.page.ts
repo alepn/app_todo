@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { NewTodoModalPage } from '../new-todo-modal/new-todo-modal.page';
 import { EditTodoModalPage } from '../edit-todo-modal/edit-todo-modal.page';
 import { AlertController } from '@ionic/angular';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-tab2',
@@ -13,7 +14,11 @@ export class Tab2Page {
 
   itemsTodo = []
 
-  constructor(private modalController: ModalController, private alertController: AlertController) {}
+  constructor(private apiService: ApiService, private modalController: ModalController, private alertController: AlertController) {
+    this.apiService.getToDos().subscribe((result:any) => {  
+      this.itemsTodo = result
+    })
+  }
 
   async presentNewTodoModal() {
     const modal = await this.modalController.create({
