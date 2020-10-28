@@ -26,8 +26,8 @@
       <ion-item>
         <ion-label>
           <h2>{{ todo.title }}</h2>
-          <h3>{{ todo.dateTime }}</h3>
-          <p>{{ todo.shortDescription }}</p>
+          <h3>{{ todo.dateTime | date: 'dd/MM/yyyy H:mm'  }}</h3>
+          <p>{{ todo.description }}</p>
         </ion-label>
       </ion-item>
 

@@ -13,9 +13,7 @@ export class NewTodoModalPage implements OnInit {
   @Input() modalController: ModalController;
   public todo = {
     'title': '',
-    'dateTime': '',
-    'shortDescription': '',
-    'detail': ''
+    'description': ''
   }
 
   constructor(private apiService: ApiService, public alertController: AlertController) { }
